@@ -5,7 +5,7 @@ var loading = document.getElementById('loading');
 
 function status(response) {
     if (response.status !== 200) {
-        console.log("Error : " + response.status);
+        // console.log("Error : " + response.status);
         return Promise.reject(new Error(response.statusText));
     } else {
         return Promise.resolve(response);
@@ -17,7 +17,7 @@ function json(response) {
 }
 
 function error(error) {
-    console.log("Error : " + error);
+    // console.log("Error : " + error);
 }
 
 function getArticleById() {
@@ -84,7 +84,7 @@ function getArticleById() {
                 resolve(data);
                 loading.setAttribute('style', 'display: none;');
             }).catch(error => {
-                console.log(`API Error : ${error}`);
+                // console.log(`API Error : ${error}`);
                 loading.setAttribute('style', 'display: none;');
             });
     });
@@ -147,7 +147,7 @@ function getTeam() {
                 loading.setAttribute('style', 'display: none;');
             }).catch(error => {
                 loading.setAttribute('style', 'display: none;');
-                console.log(`API Error : ${error}`);
+                // console.log(`API Error : ${error}`);
             });
     });
 }

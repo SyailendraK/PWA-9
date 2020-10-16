@@ -10,7 +10,7 @@ const dbPromised = idb.open("bola-mania", 1, function (upgradeDb) {
 function saveForLater(article, id) {
     getById(id).then(data => {
         if (data) {
-            console.log("Artikel sudah disimpan.");
+            // console.log("Artikel sudah disimpan.");
         } else {
             dbPromised
                 .then((db) => {
@@ -23,12 +23,12 @@ function saveForLater(article, id) {
                     M.toast({
                         html: 'Artikel berhasil di simpan'
                     });
-                    console.log("Artikel berhasil di simpan.");
+                    // console.log("Artikel berhasil di simpan.");
                 }).catch(error => {
                     M.toast({
                         html: 'Artikel gagal di simpan'
                     });
-                    console.log(`Error menyimpan ${error}`);
+                    // console.log(`Error menyimpan ${error}`);
                 });
         }
     })
@@ -71,7 +71,7 @@ function deleteByID(id) {
                 return store.delete(parseInt(id));
             })
             .then(function (article) {
-                console.log("terhapus");
+                // console.log("terhapus");
                 resolve(article);
             });
     });
