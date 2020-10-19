@@ -87,8 +87,8 @@ function getArticleById() {
                     <td class="centered-text">${club.goalsFor}</td>
                     <td class="centered-text">${club.goalsAgainst}</td>
                     <td class="centered-text">${club.goalDifference}</td>
-                </tr>`
-                })
+                </tr>`;
+                });
                 articleHTML += `</tbody>
                     </table>
                     </div>

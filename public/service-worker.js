@@ -134,7 +134,7 @@ workbox.routing.registerRoute(
             }),
         ],
     })
-)
+);
 
 workbox.routing.registerRoute(
     new RegExp("^.*api.football-data.org"),
@@ -163,4 +163,4 @@ self.addEventListener("push", function (event) {
     event.waitUntil(
         self.registration.showNotification("Push Notification Bola Mania", options)
     );
-})
+});

@@ -10,7 +10,7 @@ webPush.setVapidDetails(
     'mailto:syailendramuhammad@gmail.com',
     vapidKeys.publicKey,
     vapidKeys.privateKey
-)
+);
 const pushSubscription = {
     "endpoint": "https://fcm.googleapis.com/fcm/send/cBDciSB8ylQ:APA91bEzn3amu0DoGT67rpErFSlZwYuXT-rIx_7n9eIY9KcJwMqAJKv3YIq7V-xOQfAFRe6zh377OKGHEfq5-AmJZK1fVKcMW8Ay0esx97Z4Uuwi1IbQCNWwLNeqkZ1K82JmkM_b1Vh9",
     "keys": {

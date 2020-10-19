@@ -31,7 +31,7 @@ function saveForLater(article, id) {
                     // console.log(`Error menyimpan ${error}`);
                 });
         }
-    })
+    });
 }
 
 function getAll() {
