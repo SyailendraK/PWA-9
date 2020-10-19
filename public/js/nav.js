@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     var elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems);
-    loadNav();
+    var page = window.location.hash.substr(1);
 
     function loadNav() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4) {
-                if (this.status !== 200) return;
+                if (this.status !== 200) {
+                    return;
+                }
 
                 document.querySelectorAll(".topnav, .sidenav").forEach(function (elm) {
                     elm.innerHTML = xhttp.responseText;
@@ -28,9 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
         xhttp.send();
     }
 
-    var page = window.location.hash.substr(1);
-    if (page == "") page = "home";
-    loadPage(page);
+    if (page === "") {
+        page = "home";
+    }
+
+    loadNav();
 
     function loadPage(page) {
         var xhttp = new XMLHttpRequest();
@@ -53,5 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
         xhttp.send();
     }
 
+    loadPage(page);
 
 });

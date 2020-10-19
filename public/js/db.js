@@ -21,12 +21,12 @@ function saveForLater(article, id) {
                 })
                 .then(function () {
                     M.toast({
-                        html: 'Artikel berhasil di simpan'
+                        html: "Artikel berhasil di simpan"
                     });
                     // console.log("Artikel berhasil di simpan.");
                 }).catch(error => {
                     M.toast({
-                        html: 'Artikel gagal di simpan'
+                        html: "Artikel gagal di simpan"
                     });
                     // console.log(`Error menyimpan ${error}`);
                 });

@@ -31,10 +31,7 @@ function getAge(dateString) {
     return age;
 }
 
-async function deleteSaved(id) {
-    await deleteByID(id);
-    getSavedArticles();
-}
+
 
 function getArticleById() {
     return new Promise(function (resolve, reject) {
@@ -241,4 +238,9 @@ function getSavedArticleById() {
         document.getElementById("body-content").innerHTML = articleHTML;
         loading.setAttribute("style", "display: none;");
     });
+}
+
+async function deleteSaved(id) {
+    await deleteByID(id);
+    getSavedArticles();
 }
