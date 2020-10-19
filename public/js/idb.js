@@ -51,7 +51,9 @@
 
   function proxyRequestMethods(ProxyClass, targetProp, Constructor, properties) {
     properties.forEach(function (prop) {
-      if (!(prop in Constructor.prototype)) return;
+      if (!(prop in Constructor.prototype)) {
+        return;
+      }
       ProxyClass.prototype[prop] = function () {
         return promisifyRequestCall(this[targetProp], prop, arguments);
       };
@@ -60,7 +62,9 @@
 
   function proxyMethods(ProxyClass, targetProp, Constructor, properties) {
     properties.forEach(function (prop) {
-      if (!(prop in Constructor.prototype)) return;
+      if (!(prop in Constructor.prototype)) {
+        return;
+      }
       ProxyClass.prototype[prop] = function () {
         return this[targetProp][prop].apply(this[targetProp], arguments);
       };
@@ -69,7 +73,9 @@
 
   function proxyCursorRequestMethods(ProxyClass, targetProp, Constructor, properties) {
     properties.forEach(function (prop) {
-      if (!(prop in Constructor.prototype)) return;
+      if (!(prop in Constructor.prototype)) {
+        return;
+      }
       ProxyClass.prototype[prop] = function () {
         return promisifyCursorRequestCall(this[targetProp], prop, arguments);
       };
@@ -119,14 +125,18 @@
 
   // proxy "next" methods
   ["advance", "continue", "continuePrimaryKey"].forEach(function (methodName) {
-    if (!(methodName in IDBCursor.prototype)) return;
+    if (!(methodName in IDBCursor.prototype)) {
+      return;
+    }
     Cursor.prototype[methodName] = function () {
       var cursor = this;
       var args = arguments;
       return Promise.resolve().then(function () {
         cursor._cursor[methodName].apply(cursor._cursor, args);
         return promisifyRequest(cursor._request).then(function (value) {
-          if (!value) return;
+          if (!value) {
+            return;
+          }
           return new Cursor(value, cursor._request);
         });
       });
@@ -245,7 +255,9 @@
   ["openCursor", "openKeyCursor"].forEach(function (funcName) {
     [ObjectStore, Index].forEach(function (Constructor) {
       // Don"t create iterateKeyCursor if openKeyCursor doesn"t exist.
-      if (!(funcName in Constructor.prototype)) return;
+      if (!(funcName in Constructor.prototype)) {
+        return;
+      }
 
       Constructor.prototype[funcName.replace("open", "iterate")] = function () {
         var args = toArray(arguments);
@@ -261,7 +273,9 @@
 
   // polyfill getAll
   [Index, ObjectStore].forEach(function (Constructor) {
-    if (Constructor.prototype.getAll) return;
+    if (Constructor.prototype.getAll) {
+      return;
+    }
     Constructor.prototype.getAll = function (query, count) {
       var instance = this;
       var items = [];
