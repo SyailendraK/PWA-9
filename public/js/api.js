@@ -1,3 +1,5 @@
+/*global getAll, getById, deleteById*/
+
 var baseUrl = "https://api.football-data.org/v2/";
 const KEY = "1dc0ff54955b4ba3a4b660a35cb4c573";
 var no = 1;
