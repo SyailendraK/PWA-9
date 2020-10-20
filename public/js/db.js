@@ -8,7 +8,7 @@ const dbPromised = idb.open("bola-mania", 1, function (upgradeDb) {
 });
 
 function saveForLater(article, id) {
-    getById(id).then(data => {
+    getById(id).then((data) => {
         if (data) {
             // console.log("Artikel sudah disimpan.");
         } else {
@@ -24,7 +24,7 @@ function saveForLater(article, id) {
                         html: "Artikel berhasil di simpan"
                     });
                     // console.log("Artikel berhasil di simpan.");
-                }).catch(error => {
+                }).catch((error) => {
                     M.toast({
                         html: "Artikel gagal di simpan"
                     });
