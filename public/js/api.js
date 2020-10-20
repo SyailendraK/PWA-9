@@ -95,7 +95,7 @@ function getArticleById() {
                 </div>
                 </div>
             `;
-                document.getElementById("body-content").innerHTML = escapeHTML`${articleHTML}`;
+                document.getElementById("body-content").innerHTML = `${articleHTML}`;
                 resolve(data);
                 loading.setAttribute("style", "display: none;");
             }).catch((error) => {
@@ -188,7 +188,7 @@ function getSavedArticles() {
 
 
         });
-        document.getElementById("body-content").innerHTML = escapeHTML`${articlesHTML}`;
+        document.getElementById("body-content").innerHTML = `${articlesHTML}`;
         loading.setAttribute("style", "display: none;");
     });
 }
@@ -230,7 +230,7 @@ function getSavedArticleById() {
                             <td class="centered-text">${squad.nationality}</td>
                             <td class="centered-text">${squad.role}</td>
                         </tr>`
-        })
+        });
         articleHTML += `</tbody>
                             </table>
                             </div>

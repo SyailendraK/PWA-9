@@ -7,6 +7,20 @@ const dbPromised = idb.open("bola-mania", 1, function (upgradeDb) {
     });
 });
 
+function getById(id) {
+    return new Promise(function (resolve, reject) {
+        dbPromised
+            .then(function (db) {
+                var tx = db.transaction("teams", "readonly");
+                var store = tx.objectStore("teams");
+                return store.get(parseInt(id, 10));
+            })
+            .then(function (article) {
+                resolve(article);
+            });
+    });
+}
+
 function saveForLater(article, id) {
     getById(id).then((data) => {
         if (data) {
@@ -48,27 +62,13 @@ function getAll() {
     });
 }
 
-function getById(id) {
-    return new Promise(function (resolve, reject) {
-        dbPromised
-            .then(function (db) {
-                var tx = db.transaction("teams", "readonly");
-                var store = tx.objectStore("teams");
-                return store.get(parseInt(id));
-            })
-            .then(function (article) {
-                resolve(article);
-            });
-    });
-}
-
 function deleteByID(id) {
     return new Promise(function (resolve, reject) {
         dbPromised
             .then(function (db) {
                 var tx = db.transaction("teams", "readwrite");
                 var store = tx.objectStore("teams");
-                return store.delete(parseInt(id));
+                return store.delete(parseInt(id, 10));
             })
             .then(function (article) {
                 // console.log("terhapus");

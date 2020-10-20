@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 document.querySelectorAll(".topnav, .sidenav").forEach(function (elm) {
-                    elm.innerHTML = escapeHTML`${ponseText}`;
+                    elm.innerHTML = `${ponseText}`;
                 });
 
                 document.querySelectorAll(".sidenav a, .topnav a").forEach(function (elm) {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     getSavedArticles();
                 }
                 if (this.status === 200) {
-                    content.innerHTML = escapeHTML`${xhttp.responseText}`;
+                    content.innerHTML = `${xhttp.responseText}`;
                 } else if (this.status === 404) {
                     content.innerHTML = "<p>Halaman tidak ditemukan.</p>";
                 } else {

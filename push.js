@@ -1,4 +1,4 @@
-const webPush = require('web-push');
+const webPush = require("web-push");
 
 const vapidKeys = {
     "publicKey": "BA6QPqPV1BnjKbGiqv2um69LEcdkokhlLARFzJhSkanwZAz8ab8Ciy89pnWmQddePt1u819CsHfBHDK7WstH_6c",
@@ -7,7 +7,7 @@ const vapidKeys = {
 
 
 webPush.setVapidDetails(
-    'mailto:syailendramuhammad@gmail.com',
+    "mailto:syailendramuhammad@gmail.com",
     vapidKeys.publicKey,
     vapidKeys.privateKey
 );
@@ -18,10 +18,10 @@ const pushSubscription = {
         "auth": "OATlPBM6SWHb2w1ILMwkJA=="
     }
 };
-const payload = 'Hallo, selamat menikmati BolaMania';
+const payload = "Hallo, selamat menikmati BolaMania";
 
 const options = {
-    gcmAPIKey: '1548327288',
+    gcmAPIKey: "1548327288",
     TTL: 60
 };
 webPush.sendNotification(

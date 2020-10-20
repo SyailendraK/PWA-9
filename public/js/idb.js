@@ -31,7 +31,9 @@
   function promisifyCursorRequestCall(obj, method, args) {
     var p = promisifyRequestCall(obj, method, args);
     return p.then(function (value) {
-      if (!value) return;
+      if (!value) {
+        return false;
+      }
       return new Cursor(value, p.request);
     });
   }
@@ -135,7 +137,7 @@
         cursor._cursor[methodName].apply(cursor._cursor, args);
         return promisifyRequest(cursor._request).then(function (value) {
           if (!value) {
-            return;
+            return false;
           }
           return new Cursor(value, cursor._request);
         });
